@@ -1,0 +1,23 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/news_dashboard/node_modules
+/news_dashboard/.pnp
+/news_dashboard/.pnp.js
+
+# testing
+/news_dashboard/coverage
+
+# production
+/news_dashboard/build
+
+# misc
+/news_dashboard/.DS_Store
+/news_dashboard/.env.local
+/news_dashboard/.env.development.local
+/news_dashboard/.env.test.local
+/news_dashboard/.env.production.local
+
+/news_dashboard/npm-debug.log*
+/news_dashboard/yarn-debug.log*
+/news_dashboard/yarn-error.log*
