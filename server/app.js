@@ -13,7 +13,7 @@ var cors = require('cors');
 app.use(cors(
     {
         origin: ["https://news-dashboard-frontend.vercel.app"],
-        methods: ["POST","GET"],
+        methods: ["GET"],
         credentials: true
     }
 ));
