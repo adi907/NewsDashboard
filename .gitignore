@@ -1,23 +1,24 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/news_dashboard/node_modules
-/news_dashboard/.pnp
-/news_dashboard/.pnp.js
+/client/node_modules
+/client/.pnp
+/client/.pnp.js
+/server/node_modules
 
 # testing
-/news_dashboard/coverage
+/client/coverage
 
 # production
-/news_dashboard/build
+/client/build
 
 # misc
-/news_dashboard/.DS_Store
-/news_dashboard/.env.local
-/news_dashboard/.env.development.local
-/news_dashboard/.env.test.local
-/news_dashboard/.env.production.local
+/client/.DS_Store
+/client/.env.local
+/client/.env.development.local
+/client/.env.test.local
+/client/.env.production.local
 
-/news_dashboard/npm-debug.log*
-/news_dashboard/yarn-debug.log*
-/news_dashboard/yarn-error.log*
+/client/npm-debug.log*
+/client/yarn-debug.log*
+/client/yarn-error.log*
