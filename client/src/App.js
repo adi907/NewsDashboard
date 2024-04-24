@@ -10,6 +10,7 @@ import LineChart from './components/Linechart'
 
 function App() {
   const [news, setNews] = useState([]);
+  axios.defaults.withCredentials=true;
 
   useEffect(() => {
     // Fetch Data from server
