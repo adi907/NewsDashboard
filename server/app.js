@@ -17,7 +17,7 @@ app.use('/', apiRoutes);
 
 app.get('/',async (req,res)=>{
 
-    res.send("All News articles");
+    res.send("All News articles can be accessed in backend by going to route : /news");
 
 });
 
