@@ -34,4 +34,4 @@ The objective of this project is to provide users with a user-friendly and inter
 4. `cd .\news_dashboard\`
 5. Install dependencies again using `npm install`
 6. Run the Application using `npm start`
-7. Access the application in your web browser at http://localhost:3000.
+7. Access the application in your web browser at http://localhost:8080.
