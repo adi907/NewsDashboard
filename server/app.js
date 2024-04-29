@@ -1,10 +1,8 @@
-const mongoose = require('mongoose');
 const express = require('express');
-const fs=require('fs');
-const apiRoutes=require('./routes/api');
+const apiRoutes=require('./routes/api.js');
 
-const News = require('./models/News');
-const db = require('./utils/db_setup');
+const News = require('./models/News.js');
+const db = require('./utils/db_setup.js');
 
 const app = express();
 
