@@ -1,9 +1,6 @@
 const express = require('express');
 const apiRoutes=require('./routes/api.js');
 
-const News = require('./models/News.js');
-const db = require('./utils/db_setup.js');
-
 const app = express();
 
 var cors = require('cors');
