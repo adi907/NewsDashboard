@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const News = require('../models/News');
 
 // Your API routes
-router.get('/news', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
       const news = await News.find();
       // console.log(news);
