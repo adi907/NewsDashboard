@@ -10,11 +10,12 @@ import LineChart from './components/Linechart'
 
 function App() {
   const [news, setNews] = useState([]);
+  axios.defaults.withCredentials=true;
 
   useEffect(() => {
     // Fetch Data from server
     const getData = async () =>{
-      await axios.get('http://localhost:8080/news')
+      await axios.get('https://news-dashboard-sigma.vercel.app/news')
         .then(response => {
           setNews(response.data);
         }).catch(error => {

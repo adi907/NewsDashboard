@@ -10,7 +10,13 @@ const app = express();
 
 var cors = require('cors');
 
-app.use(cors());
+app.use(cors(
+    {
+        origin: ["https://news-dashboard-frontend.vercel.app"],
+        methods: ["GET"],
+        credentials: true
+    }
+));
 
 // Use your API routes
 app.use('/', apiRoutes);
