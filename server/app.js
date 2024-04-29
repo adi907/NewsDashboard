@@ -30,7 +30,8 @@ app.get('/',async (req,res)=>{
 
 // Add your routes and other configurations here
 const hostname='127.0.0.1';
-const PORT = process.env.PORT || 8080;
+// const PORT = process.env.PORT || 8080;
+const PORT = 8080;
 app.listen(PORT, () => {
   console.log(`Application running successfully on http://${hostname}:${PORT}/news`);
 });
