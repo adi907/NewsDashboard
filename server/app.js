@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 const express = require('express');
 const fs=require('fs');
 const apiRoutes=require('./routes/api.js');
@@ -27,7 +27,7 @@ app.use('/', apiRoutes);
 
 app.get('/',async (req,res)=>{
 
-    res.send("All News articles can be accessed in backend by going to route : /news");
+    res.send("All News articles can be accessed in backend by going to route : ");
 
 });
 
@@ -36,5 +36,6 @@ app.get('/',async (req,res)=>{
 const hostname='127.0.0.1';
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
-  console.log(`Application running successfully on http://${hostname}:${PORT}/news`);
+//   console.log(`Application running successfully on http://${hostname}:${PORT}/news`);
+  console.log(`Application running successfully on http://${hostname}:${PORT}/`);
 });
