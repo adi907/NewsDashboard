@@ -10,6 +10,10 @@ const app = express();
 
 var cors = require('cors');
 
+// For local
+// app.use(cors());
+
+// For deploypments
 app.use(cors(
     {
         origin: ["https://news-dashboard-frontend.vercel.app"],

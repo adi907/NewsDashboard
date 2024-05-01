@@ -15,7 +15,11 @@ function App() {
   useEffect(() => {
     // Fetch Data from server
     const getData = async () =>{
-      await axios.get('https://news-dashboard-sigma.vercel.app/news')
+      // For local
+      // await axios.get('http://localhost:8080/')
+
+      // For deploymenent
+      await axios.get('https://news-dashboard-backend.vercel.app/')
         .then(response => {
           setNews(response.data);
         }).catch(error => {
