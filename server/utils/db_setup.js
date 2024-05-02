@@ -3,7 +3,7 @@ const fs = require('fs');
 
 const MONGODB_URI = 'mongodb+srv://adityaq907:'+encodeURIComponent('Ramlal@123')+'@cluster0.67qglcf.mongodb.net/';
 
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(MONGODB_URI, {} );
 
 const db = mongoose.connection;
 
