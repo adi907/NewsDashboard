@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const fs = require('fs');
+const path = require ('path');
 
 const MONGODB_URI = 'mongodb+srv://adityaq907:'+encodeURIComponent('Ramlal@123')+'@cluster0.67qglcf.mongodb.net/';
 
@@ -14,7 +15,7 @@ db.once('open', () => {
 
 // Read the JSON file
 // const jsonData = fs.readFileSync('jsondata.json','utf8');
-const jsonData = fs.readFileSync('../jsondata.json','utf8');
+const jsonData = fs.readFileSync(path.resolve(__dirname, '../jsondata.json'));
 
 // Parse the JSON data
 const records = JSON.parse(jsonData);
