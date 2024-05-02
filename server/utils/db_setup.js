@@ -13,7 +13,8 @@ db.once('open', () => {
 });
 
 // Read the JSON file
-const jsonData = fs.readFileSync('jsondata.json','utf8');
+// const jsonData = fs.readFileSync('jsondata.json','utf8');
+const jsonData = fs.readFileSync('../jsondata.json','utf8');
 
 // Parse the JSON data
 const records = JSON.parse(jsonData);
