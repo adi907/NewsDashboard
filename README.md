@@ -1,6 +1,6 @@
 # News Analysis Dashboard
 
-## (Project Link)[https://news-dashboard-frontend.vercel.app/]
+## Project Link: https://news-dashboard-frontend.vercel.app/
 #### The News Analysis Dashboard is a web application designed to provide insights into news articles based on various parameters such as publication year, topic frequency, geographic distribution, likelihood, and intensity. It offers a collection of interactive data visualizations, including line charts, word clouds, bubble maps, and scatter plots, to facilitate exploration and analysis of news trends.
 ![BlackcofferNewsDashboard](https://github.com/adi907/NewsDashboard_BlackCofferAssignment/assets/76524120/71fbd42c-9d30-4b9e-b8a6-cb9c6cde57dc)
 
