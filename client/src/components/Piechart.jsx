@@ -11,9 +11,9 @@ export default function PieChart(news) {
         return acc;
     }, {});
 
-    let width = 500;
-    let height = 500;
     let margin = 50;
+    let width = 700-margin;
+    let height = 500-margin;
 
     const radius = Math.min(width, height) / 2 - margin;
 
@@ -32,9 +32,12 @@ export default function PieChart(news) {
 
         const dataForPie = Object.entries(regionData).map(([key, value]) => ({ key, value }));
 
-        const arc = d3.arc().innerRadius(0).outerRadius(radius);
+        const arc = d3.arc().innerRadius(0).outerRadius(radius+ margin);
 
-        const svg = d3.select(svgRef.current);
+        const svg = d3.select(svgRef.current)
+            .attr('viewBox', `0 0 ${width} ${height}`)
+            .attr('preserveAspectRatio', 'xMinYMin meet')
+            .classed('svg-content-responsive', true);
 
         svg.selectAll('*').remove(); // Clear previous chart
 
@@ -53,7 +56,7 @@ export default function PieChart(news) {
             .attr('d', arc)
             .style('cursor', 'pointer') // Add pointer cursor on hover
             .on('mouseover', function (event, d) {
-                d3.select(this).attr('opacity', '0.80'); // Highlight the slice
+                d3.select(this).attr('opacity', '0.75'); // Highlight the slice
             })
             .on('mouseout', function (event, d) {
                 d3.select(this).attr('opacity', '1'); // Restore original color on mouseout
@@ -61,17 +64,15 @@ export default function PieChart(news) {
             .append('title')
             .text(d => `${d.data.key}: ${d.data.value}`)
 
-
-
-    }, [regionData, width, height, radius]);
+    }, [regionData, width, height, radius, margin]);
 
     return (
-        <div className='PieChart_region center'>
+        <div className='PieChart_region relative flex flex-col gap-5 justify-between items-center bg-light-gray border rounded-3xl p-5 md:col-span-4 col-span-12'>
 
-            <h2>World Region in Focus</h2>
+            <h2 className='font-semibold text-xl text-center font-montserrat'>World Regions in Focus</h2>
 
-            <svg ref={svgRef} width={width} height={height}>
-                <g transform={`translate(${width / 2},${height / 2})`} />
+            <svg ref={svgRef} >
+                <g />
             </svg>
 
         </div>

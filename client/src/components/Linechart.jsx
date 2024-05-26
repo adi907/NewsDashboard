@@ -14,8 +14,8 @@ export default function WordChart({ newsData }) {
     const svgRef = useRef();
 
     useEffect(() => {
-        const margin = 25;
-        const width = 800;
+        const margin = 50;
+        const width = 600;
         const height = 500;
 
         if (!timeData || Object.keys(timeData).length === 0) {
@@ -23,26 +23,32 @@ export default function WordChart({ newsData }) {
         }
 
         const svg = d3.select(svgRef.current)
-            .attr('width', width + margin)
-            .attr('height', height + margin);
+            .attr('viewBox', `0 0 ${width + margin} ${height + margin}`)
+            .attr('preserveAspectRatio', 'xMinYMin meet')
+            .classed('svg-content-responsive', true);
 
         // Define scales
-        const timerange=d3.extent(Object.keys(timeData).map(year=>+year));
-        timerange[0]-=2;
-        timerange[1]+=2;
-        console.log(timerange);
+        const timerange = d3.extent(Object.keys(timeData).map(year => +year));
+        
+        // Add 2 to both extents of time so that graph looks neat(doesnt start and end directly at corner of graph)
+        timerange[0] -= 2; 
+        timerange[1] += 2;
+        
         const xScale = d3.scaleLinear()
-            .domain(d3.extent(timerange))
-            .range([0, width-margin]);
+        .domain(d3.extent(timerange))
+        .range([0, width - margin]);
+        
 
         const yScale = d3.scaleLinear()
             .domain([0, 200])
-            .range([height-margin, 0]);
+            .range([height - margin, 0]);
 
         // Add x axis
         svg.append('g')
             .attr('transform', `translate(${margin}, ${height})`)
-            .call(d3.axisBottom(xScale).ticks(17));
+            // .call(d3.axisBottom(xScale).ticks(17));
+            // .call(d3.axisBottom(xScale).tickFormat(d3.format('d')));
+            .call(d3.axisBottom(xScale).tickFormat(d3.format('d')).ticks(17));
 
         // Add y axis
         svg.append('g')
@@ -62,28 +68,28 @@ export default function WordChart({ newsData }) {
             .attr('stroke', 'steelblue') // Adjust the color of the line as needed
             .attr('stroke-width', 5) // Adjust the width of the line as needed
             .attr('d', line)
-            .attr('transform',`translate(${margin},${margin})`)
+            .attr('transform', `translate(${margin},${margin})`)
             // .append('title')
             // .text((d,i) =>  `${d[i]}`)
             .on('mouseover', function (event, d) {
                 const [x, y] = d3.pointer(event);
-                svg.append('text')
-                  .attr('id', 'tooltip')
-                  .attr('x', x)
-                  .attr('y', y)
-                  .text(`Year: ${Math.round(xScale.invert(x))}, News Count: ${Math.round(yScale.invert(y))}`);
-              })
-              .on('mouseout', function () {
+                svg.append('title')
+                    .attr('id', 'tooltip')
+                    .attr('x', x)
+                    .attr('y', y)
+                    .text(`Year: ${Math.round(xScale.invert(x))}, News Count: ${Math.round(yScale.invert(y))}`);
+            })
+            .on('mouseout', function () {
                 svg.select('#tooltip').remove();
-              });
-        
+            });
+
 
     }, [timeData]);
 
 
     return (
-        <div className='yearLine center'>
-            <h2>News Year by Year </h2>
+        <div className='yearLine relative flex flex-col gap-5 justify-between items-center bg-light-gray border rounded-3xl pt-5 col-span-12 md:col-span-4'>
+            <h2 className='font-semibold text-xl text-center font-montserrat'>News Year by Year </h2>
             <svg ref={svgRef}></svg>
         </div>
     );

@@ -25,8 +25,9 @@ export default function ScatterPlot({ newsData }) {
         }
 
         const svg = d3.select(svgRef.current)
-            .attr('width', width + margin)
-            .attr('height', height + margin);
+            .attr('viewBox', `0 0 ${width+margin} ${height+margin}`)
+            .attr('preserveAspectRatio', 'xMinYMin meet')
+            .classed('svg-content-responsive', true);
 
         // Define scales
         const xScale = d3.scaleLinear()
@@ -69,20 +70,13 @@ export default function ScatterPlot({ newsData }) {
     }, [likevsIntenseData]);
 
     return (
-        <div className='barChart center'>
-            <h2>How Serious Is your News</h2>
-            <h4>Likelihood V/S Intensity</h4>
+        <div className='barChart relative flex flex-col gap-5 justify-center items-center bg-light-gray border rounded-3xl pt-5 col-span-12 md:col-span-4'>
+            <div>
+                <h2 className='font-semibold text-xl text-center font-montserrat'>How Serious Is your News</h2>
+                <h2 className='font-md text-md text-center font-montserrat'>Likelihood V/S Intensity</h2>
+            </div>
             <svg ref={svgRef}></svg>
         </div>
     );
-    // <svg width={width} height={height}>
-    // <g ref={gx} transform={`translate(0,${height - marginBottom})`} />
-    // <g ref={gy} transform={`translate(${marginLeft},0)`} />
-    // <path fill="none" stroke="currentColor" strokeWidth="1.5" d={line(data)} />
-    // <g fill="white" stroke="currentColor" strokeWidth="1.5">
-    // {data.map((d, i) => (<circle key={i} cx={x(i)} cy={y(d)} r="2.5" />))}
-    // </g>
-    // </svg>
-
 
 }
