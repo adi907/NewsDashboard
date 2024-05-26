@@ -1,4 +1,3 @@
-import './App.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ScatterPlot from './components/ScatterPlot';
@@ -10,6 +9,10 @@ import LineChart from './components/Linechart'
 
 function App() {
   const [news, setNews] = useState([]);
+
+  // For local: comment below out
+
+  // For deployment
   axios.defaults.withCredentials=true;
 
   useEffect(() => {
@@ -31,15 +34,20 @@ function App() {
   
   return(
     <div>
-      <h1 className='center'>NEWS DASHBOARD</h1>
+      <h1 className='text-center md:text-left font-light text-5xl m-5'>News Data Analysis</h1>
 
-      <BubbleChart newsData={news} />
-      <WordChart newsData={news} />
-      <PieChart newsData={news} />
-      <ScatterPlot newsData={news}/>
-      <LineChart newsData={news} />
+      <section className="grid grid-cols-1 md:grid-cols-12 gap-4 max-w-7wxl mx-auto p-[5%] group">
 
-    </div>
+        <BubbleChart newsData={news} />
+        <WordChart newsData={news} />
+        <PieChart newsData={news} />
+        <ScatterPlot newsData={news}/>
+        <LineChart newsData={news} />
+
+      </section>
+
+
+      </div>
 
   );
 }

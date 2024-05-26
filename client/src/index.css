@@ -1,33 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
 
-body {
-  margin: 0;
-  font-family: "Poppins",sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  background-color: burlywood;
-}
-
-svg{
-  background-color: rgb(193, 193, 193);
-  border:1px solid #000;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-.country{
-  /* fill:#fff; */
-  stroke:#999;
-}
-
-.center{
-  text-align: center;
-}
-
-h1{
-  font-family: "Poppins",sans-serif;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

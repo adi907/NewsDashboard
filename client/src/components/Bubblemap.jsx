@@ -23,15 +23,18 @@ export default function BubbleMap({ newsData }) {
         }
 
         const svg = d3.select(svgRef.current)
-            .attr('width', width)
-            .attr('height', height);
-            
-        // d3.json('../../public/countries.geo.json','utf8');    
-        d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then( data => {
-            // Create a map projection
-            const countries=topojson.feature(data,data.objects.countries);
+            .attr('viewBox', `0 0 ${width} ${height}`)
+            .attr('preserveAspectRatio', 'xMinYMin meet')
+            .classed('svg-content-responsive', true);
+        // .attr('width', width)
+        // .attr('height', height);
 
-            const projection = d3.geoMercator().scale(140).translate([width/2,height/1.4]);
+        // d3.json('../../public/countries.geo.json','utf8');    
+        d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(data => {
+            // Create a map projection
+            const countries = topojson.feature(data, data.objects.countries);
+
+            const projection = d3.geoMercator().scale(140).translate([width / 2, height / 1.4]);
 
             // Create a path generator
             const path = d3.geoPath(projection);
@@ -47,7 +50,7 @@ export default function BubbleMap({ newsData }) {
                 .enter()
                 .append('path')
                 .attr('class', 'country')
-                .attr('d',path)
+                .attr('d', path)
                 .attr('fill', (feature) => {
                     // Use the countryData to determine the fill color
                     const countryName = feature.properties.name;
@@ -58,27 +61,27 @@ export default function BubbleMap({ newsData }) {
                 })
                 .style('cursor', 'pointer')
                 .on('mouseover', function (event, feature) {
-                    d3.select(this).attr('opacity', '0.96'); // Highlight the slice
+                    d3.select(this).attr('opacity', '0.75'); // Highlight the slice
                 })
                 .on('mouseout', function (event, d) {
                     d3.select(this).attr('opacity', '1'); // Restore original color on mouseout
                 })
                 .append('title')
                 .text((feature) => {
-                    if(countryData[feature.properties.name]){
+                    if (countryData[feature.properties.name]) {
                         return `${feature.properties.name}: ${countryData[feature.properties.name]}`;
-                    }else{
+                    } else {
                         return `${feature.properties.name}: 0`;
                     }
                 })
-        });         
+        });
 
     }, [countryData]);
 
     return (
-        <div className='worldMap center'>
-            <h2>Most Talked About Countries</h2>
-            <svg ref={svgRef}></svg>
+        <div className='worldMap relative flex flex-col gap-5 justify-center items-center border-2 bg-light-gray rounded-3xl p-5 col-span-12 md:col-span-7 '>
+            <h2 className='font-semibold text-xl text-center font-montserrat'>Most Talked About Countries</h2>
+            <svg className='bg-blue-400' ref={svgRef}></svg>
         </div>
     );
 
